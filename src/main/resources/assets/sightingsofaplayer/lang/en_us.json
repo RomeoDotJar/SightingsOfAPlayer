@@ -1,0 +1,20 @@
+{
+  "itemGroup.sightingsofaplayer": "Sightings of a Player",
+
+  "block.sightingsofaplayer.null_block": "Null Block",
+
+  "item.sightingsofaplayer.example_item": "Example Item",
+
+  "item.sightingsofaplayer.amulet": "Suspicious Amulet",
+  "item.sightingsofaplayer.amulet.tooltip": "Single use. Using it may have irreversible consequences.",
+  "item.sightingsofaplayer.amulet.used": "The Amulet snaps tight to your neck.",
+  "item.sightingsofaplayer.amulet.already_used": "You have already used an Amulet.",
+
+  "sightingsofaplayer.configuration.title": "Example Mod Configs",
+  "sightingsofaplayer.configuration.section.sightingsofaplayer.common.toml": "Example Mod Configs",
+  "sightingsofaplayer.configuration.section.sightingsofaplayer.common.toml.title": "Example Mod Configs",
+  "sightingsofaplayer.configuration.items": "Item List",
+  "sightingsofaplayer.configuration.logDirtBlock": "Log Dirt Block",
+  "sightingsofaplayer.configuration.magicNumberIntroduction": "Magic Number Text",
+  "sightingsofaplayer.configuration.magicNumber": "Magic Number"
+}
