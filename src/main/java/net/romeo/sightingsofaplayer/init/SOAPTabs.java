@@ -4,6 +4,7 @@ import net.minecraft.client.gui.components.tabs.Tab;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.romeo.sightingsofaplayer.SOAP;
@@ -15,4 +16,8 @@ public class SOAPTabs {
 
     public static final DeferredHolder<CreativeModeTab, SOAPTab> SOAP_TAB
             = REGISTRY.register("soap_tab", SOAPTab::new);
+
+    public static void register(IEventBus bus) {
+        REGISTRY.register(bus);
+    }
 }

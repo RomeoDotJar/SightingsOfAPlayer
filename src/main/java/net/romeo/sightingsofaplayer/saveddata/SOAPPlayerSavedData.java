@@ -30,13 +30,13 @@ import net.romeo.sightingsofaplayer.SOAP;
  * live). Using the Amulet in the overworld, the Nether, the End or a modded dimension
  * therefore all read and write the very same record.
  */
-public class SOAPSavedData extends SavedData {
+public class SOAPPlayerSavedData extends SavedData {
 
     /** Name of the {@code .dat} file, stored next to the world's other saved data. */
-    public static final String DATA_NAME = SOAP.MODID + "_amulet_usage";
+    public static final String DATA_NAME = SOAP.MODID + "_player";
 
-    private static final SavedData.Factory<SOAPSavedData> FACTORY
-            = new SavedData.Factory<>(SOAPSavedData::create, SOAPSavedData::load);
+    private static final SavedData.Factory<SOAPPlayerSavedData> FACTORY
+            = new SavedData.Factory<>(SOAPPlayerSavedData::create, SOAPPlayerSavedData::load);
 
     private static final String TAG_USED = "AmuletUsed";
     private static final String TAG_NOT_USED = "AmuletNotUsed";
@@ -45,13 +45,13 @@ public class SOAPSavedData extends SavedData {
     private final Set<UUID> amuletNonUsers = new HashSet<>();
 
     // Create new instance of saved data
-    public static SOAPSavedData create() {
-        return new SOAPSavedData();
+    public static SOAPPlayerSavedData create() {
+        return new SOAPPlayerSavedData();
     }
 
     // Load existing instance of saved data
-    public static SOAPSavedData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
-        SOAPSavedData data = SOAPSavedData.create();
+    public static SOAPPlayerSavedData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
+        SOAPPlayerSavedData data = SOAPPlayerSavedData.create();
         readUuids(tag, TAG_USED, data.amuletUsers);
         readUuids(tag, TAG_NOT_USED, data.amuletNonUsers);
         return data;
@@ -65,7 +65,7 @@ public class SOAPSavedData extends SavedData {
      * entire server no matter which dimension it is called from. The record is cached by the
      * server, so a player who used the Amulet in one dimension counts as "used" in all of them.
      */
-    public static SOAPSavedData get(MinecraftServer server) {
+    public static SOAPPlayerSavedData get(MinecraftServer server) {
         return server.overworld().getDataStorage().computeIfAbsent(FACTORY, DATA_NAME);
     }
 

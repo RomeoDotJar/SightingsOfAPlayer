@@ -3,18 +3,56 @@
 
   "block.sightingsofaplayer.null_block": "Null Block",
 
+  "entity.sightingsofaplayer.stalker": "Stalker",
+
   "item.sightingsofaplayer.example_item": "Example Item",
 
   "item.sightingsofaplayer.amulet": "Suspicious Amulet",
-  "item.sightingsofaplayer.amulet.tooltip": "Single use. Using it may have irreversible consequences.",
+  "item.sightingsofaplayer.amulet.tooltip": "Putting it on may have irreversible consequences.",
   "item.sightingsofaplayer.amulet.used": "The Amulet snaps tight to your neck.",
   "item.sightingsofaplayer.amulet.already_used": "You have already used an Amulet.",
 
-  "sightingsofaplayer.configuration.title": "Example Mod Configs",
-  "sightingsofaplayer.configuration.section.sightingsofaplayer.common.toml": "Example Mod Configs",
-  "sightingsofaplayer.configuration.section.sightingsofaplayer.common.toml.title": "Example Mod Configs",
+  "commands.sightingsofaplayer.time.total": "This world has run for %s ticks in total (%s in-game days).",
+  "commands.sightingsofaplayer.time.day": "Currently day %s, %s ticks into it (a full day is %s ticks).",
+
+  "commands.sightingsofaplayer.myths.header": "Myths Roster Status:",
+  "commands.sightingsofaplayer.myths.entry": "- %s: %s (Curse: %s)",
+
+  "commands.sightingsofaplayer.events.disabled": "The SOAP event system is disabled in the config.",
+  "commands.sightingsofaplayer.events.status": "SOAP events: %s run so far, %s registered.",
+
+  "commands.sightingsofaplayer.events.none": "The next event has not been chosen yet.",
+  "commands.sightingsofaplayer.events.next": "Next: %s in %ss.",
+
+  "commands.sightingsofaplayer.events.recent": "Recent: %s",
+  "commands.sightingsofaplayer.events.recent.entry": "%s (day %s)",
+  "commands.sightingsofaplayer.events.recent.empty": "Recent: nothing yet.",
+
+  "commands.sightingsofaplayer.events.list.header": "Registered SOAP events:",
+  "commands.sightingsofaplayer.events.list.entry": "- %s [%s], run %s times, last time at %s ticks.",
+  "commands.sightingsofaplayer.events.available": "can run",
+  "commands.sightingsofaplayer.events.unavailable": "blocked",
+
+  "commands.sightingsofaplayer.events.rate": "SOAP running %s events per day on average (%s%% dynamic pace)",
+
+  "commands.sightingsofaplayer.events.forced": "Ran SOAP event: %s.",
+  "commands.sightingsofaplayer.events.force.failed": "SOAP event %s had nothing to do.",
+  "commands.sightingsofaplayer.events.unknown": "Unknown SOAP event: %s",
+
+  "soap_event.sightingsofaplayer.bb_gather_detectives.arrive": "The Amulet pulls you somewhere dark and cold.",
+  "soap_event.sightingsofaplayer.bb_gather_detectives.return": "The room lets go, and the world snaps back into place.",
+
+  "sightingsofaplayer.configuration.title": "Config: Sightings of a Player",
+  "sightingsofaplayer.configuration.section.sightingsofaplayer.common.toml": "Config: Sightings of a Player",
+  "sightingsofaplayer.configuration.section.sightingsofaplayer.common.toml.title": "Config: Sightings of a Player",
   "sightingsofaplayer.configuration.items": "Item List",
   "sightingsofaplayer.configuration.logDirtBlock": "Log Dirt Block",
   "sightingsofaplayer.configuration.magicNumberIntroduction": "Magic Number Text",
-  "sightingsofaplayer.configuration.magicNumber": "Magic Number"
+  "sightingsofaplayer.configuration.magicNumber": "Magic Number",
+
+  "sightingsofaplayer.configuration.eventsEnabled": "Events Enabled",
+  "sightingsofaplayer.configuration.eventNoRepeatWindow": "How Many Unique Events Before an Event Can Repeat",
+  "sightingsofaplayer.configuration.investigationDurationDays": "Investigation Duration in Days",
+  "sightingsofaplayer.configuration.pacePercentage": "Pace Percentage",
+  "sightingsofaplayer.configuration.temperaturePercentage": "Temperature Percentage"
 }

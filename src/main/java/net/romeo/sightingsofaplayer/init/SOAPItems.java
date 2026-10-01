@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -17,4 +18,8 @@ public class SOAPItems {
 
     public static final DeferredHolder<Item, AmuletItem> AMULET
             = REGISTRY.register("amulet", AmuletItem::new);
+
+    public static void register(IEventBus bus) {
+        REGISTRY.register(bus);
+    }
 }

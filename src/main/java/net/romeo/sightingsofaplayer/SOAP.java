@@ -1,24 +1,14 @@
 package net.romeo.sightingsofaplayer;
 
 import net.romeo.sightingsofaplayer.init.SOAPBlocks;
+import net.romeo.sightingsofaplayer.init.SOAPEntities;
 import net.romeo.sightingsofaplayer.init.SOAPItems;
+import net.romeo.sightingsofaplayer.init.SOAPSounds;
 import net.romeo.sightingsofaplayer.init.SOAPTabs;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -27,13 +17,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.romeo.sightingsofaplayer.saveddata.SOAPSavedData;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(SOAP.MODID)
@@ -46,9 +30,12 @@ public class SOAP {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        SOAPItems.REGISTRY.register(modEventBus);
-        SOAPBlocks.REGISTRY.register(modEventBus);
-        SOAPTabs.REGISTRY.register(modEventBus);
+        SOAPSounds.register(modEventBus);
+        SOAPItems.register(modEventBus);
+        SOAPBlocks.register(modEventBus);
+        SOAPTabs.register(modEventBus);
+        SOAPEntities.register(modEventBus);
+        modEventBus.addListener(SOAPEntities::registerAttributes);
 
         // Note that this is necessary if and only if we want *this* class to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -58,7 +45,7 @@ public class SOAP {
         modEventBus.addListener(this::addCreative);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, SOAPConfig.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -76,15 +63,5 @@ public class SOAP {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("DON'T ANSWER ITS QUESTIONS");
-    }
-
-    // Every player the world sees is remembered as "has not used an Amulet" until they
-    // use one. This is what lets the server answer who used an Amulet and who did not.
-    @SubscribeEvent
-    public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        Player player = event.getEntity();
-        if (player.level() instanceof ServerLevel serverLevel) {
-            SOAPSavedData.get(serverLevel.getServer()).markAmuletNotUsed(player.getUUID());
-        }
     }
 }
